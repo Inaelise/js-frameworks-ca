@@ -1,3 +1,10 @@
+import { ShoppingCart } from "lucide-react";
+import { NavLink } from "react-router-dom";
+
 export default function CartIcon() {
-  return <h1>This is the cart icon component</h1>;
+  return (
+    <NavLink to="/checkout">
+      <ShoppingCart />
+    </NavLink>
+  );
 }
