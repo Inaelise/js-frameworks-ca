@@ -1,10 +1,10 @@
 import { ShoppingCart } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function CartIcon() {
   return (
-    <NavLink to="/checkout">
+    <Link to="/checkout">
       <ShoppingCart />
-    </NavLink>
+    </Link>
   );
 }
