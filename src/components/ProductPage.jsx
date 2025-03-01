@@ -48,6 +48,7 @@ export default function ProductPage() {
         <img src={product.image.url} alt={product.image.alt} />
         <p>{product.description}</p>
         <p>{product.price}</p>
+        <button>Add to cart</button>
       </section>
       <section>
         <h2>Reviews</h2>
