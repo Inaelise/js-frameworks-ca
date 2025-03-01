@@ -1,3 +1,21 @@
-export default function Home() {
-  return <h1>This is the home page component</h1>;
+import Product from "./Product";
+
+export default function Home(props) {
+  return (
+    <main>
+      <section>
+        {props.items.map((item) => (
+          <li key={item.id}>
+            <Product
+              id={item.id}
+              img={item.image}
+              title={item.title}
+              body={item.description}
+              price={item.price}
+            />
+          </li>
+        ))}
+      </section>
+    </main>
+  );
 }
