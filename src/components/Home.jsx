@@ -12,6 +12,7 @@ export default function Home(props) {
               title={item.title}
               body={item.description}
               price={item.price}
+              discountedPrice={item.discountedPrice}
             />
           </li>
         ))}

@@ -1,3 +1,4 @@
+import ProductPrice from "./ProductPrice";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -47,7 +48,10 @@ export default function ProductPage() {
         <h1>{product.title}</h1>
         <img src={product.image.url} alt={product.image.alt} />
         <p>{product.description}</p>
-        <p>{product.price}</p>
+        <ProductPrice
+          price={product.price}
+          discountedPrice={product.discountedPrice}
+        />
         <button>Add to cart</button>
       </section>
       <section>
