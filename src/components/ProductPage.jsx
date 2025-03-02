@@ -1,10 +1,12 @@
 import ProductPrice from "./ProductPrice";
+import { useCart } from "../hooks/useCart";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function ProductPage() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const { dispatch } = useCart();
 
   useEffect(() => {
     const apiUrl = `https://v2.api.noroff.dev/online-shop/${id}`;
@@ -43,7 +45,7 @@ export default function ProductPage() {
   }
 
   return (
-    <>
+    <main>
       <section>
         <h1>{product.title}</h1>
         <img src={product.image.url} alt={product.image.alt} />
@@ -52,12 +54,27 @@ export default function ProductPage() {
           price={product.price}
           discountedPrice={product.discountedPrice}
         />
-        <button>Add to cart</button>
+        <button
+          onClick={() =>
+            dispatch({
+              type: "addToCart",
+              payload: {
+                id: product.id,
+                title: product.title,
+                price: product.price,
+                discountedPrice: product.discountedPrice,
+                image: product.image,
+              },
+            })
+          }
+        >
+          Add to cart
+        </button>
       </section>
       <section>
         <h2>Reviews</h2>
         {showReviews(product.reviews)}
       </section>
-    </>
+    </main>
   );
 }
