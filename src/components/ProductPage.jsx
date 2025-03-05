@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function ProductPage() {
+  const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const { dispatch } = useCart();
@@ -11,20 +12,31 @@ export default function ProductPage() {
   useEffect(() => {
     const apiUrl = `https://v2.api.noroff.dev/online-shop/${id}`;
     async function getProduct() {
+      setIsLoading(true);
       try {
         const response = await fetch(apiUrl);
         const json = await response.json();
         setProduct(json.data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     }
 
     getProduct();
   }, [id]);
 
+  if (isLoading) {
+    return (
+      <div className="spinner-container">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
+
   if (!product) {
-    return <h2>Loading...</h2>;
+    return <h2>Product not found.</h2>;
   }
 
   function showReviews(reviews) {

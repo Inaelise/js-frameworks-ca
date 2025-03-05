@@ -13,9 +13,11 @@ const apiUrl = "https://v2.api.noroff.dev/online-shop";
 function App() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     async function getData() {
+      setIsLoading(true);
       try {
         const response = await fetch(apiUrl);
         const json = await response.json();
@@ -23,6 +25,8 @@ function App() {
         setFilteredItems(json.data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     }
 
@@ -47,7 +51,15 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route
             index
-            element={<Home items={filteredItems} onSearch={handleSearch} />}
+            element={
+              isLoading ? (
+                <div className="spinner-container">
+                  <div className="spinner"></div>
+                </div>
+              ) : (
+                <Home items={filteredItems} onSearch={handleSearch} />
+              )
+            }
           />
           <Route path="product/:id" element={<ProductPage />} />
           <Route path="contact" element={<ContactPage />} />
