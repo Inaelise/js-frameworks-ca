@@ -7,7 +7,6 @@ import CheckoutSuccessPage from "./components/CheckoutSuccessPage";
 import Layout from "./components/Layout";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import SearchBar from "./components/SearchBar";
 
 const apiUrl = "https://v2.api.noroff.dev/online-shop";
 
@@ -44,10 +43,12 @@ function App() {
 
   return (
     <>
-      <SearchBar onSearch={handleSearch} items={items} />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home items={filteredItems} />} />
+          <Route
+            index
+            element={<Home items={filteredItems} onSearch={handleSearch} />}
+          />
           <Route path="product/:id" element={<ProductPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="checkout" element={<CheckoutPage />} />
