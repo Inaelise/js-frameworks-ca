@@ -4,7 +4,7 @@ import CartIcon from "./CartIcon";
 export default function Header() {
   return (
     <header>
-      <img src="" alt="" />
+      <img className="logo" src="/images/variety-logo.png" alt="Variety logo" />
       <Nav />
       <CartIcon />
     </header>
