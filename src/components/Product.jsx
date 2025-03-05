@@ -6,7 +6,6 @@ export default function Product(props) {
     <div>
       <img src={props.img.url} alt={props.img.alt} />
       <h2>{props.title}</h2>
-      <p>{props.body}</p>
       <ProductPrice
         price={props.price}
         discountedPrice={props.discountedPrice}
