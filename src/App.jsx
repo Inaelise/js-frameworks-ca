@@ -14,10 +14,12 @@ function App() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     async function getData() {
       setIsLoading(true);
+      setIsError(false);
       try {
         const response = await fetch(apiUrl);
         const json = await response.json();
@@ -25,6 +27,7 @@ function App() {
         setFilteredItems(json.data);
       } catch (error) {
         console.log(error);
+        setIsError(true);
       } finally {
         setIsLoading(false);
       }
@@ -55,6 +58,10 @@ function App() {
               isLoading ? (
                 <div className="spinner-container">
                   <div className="spinner"></div>
+                </div>
+              ) : isError ? (
+                <div>
+                  <p>Something went wrong. Could not load data.</p>
                 </div>
               ) : (
                 <Home items={filteredItems} onSearch={handleSearch} />

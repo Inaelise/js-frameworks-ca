@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function ProductPage() {
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const { dispatch } = useCart();
@@ -13,12 +14,15 @@ export default function ProductPage() {
     const apiUrl = `https://v2.api.noroff.dev/online-shop/${id}`;
     async function getProduct() {
       setIsLoading(true);
+      setIsError(false);
       try {
+        /* throw new Error("Simulated network error"); */
         const response = await fetch(apiUrl);
         const json = await response.json();
         setProduct(json.data);
       } catch (error) {
         console.log(error);
+        setIsError(true);
       } finally {
         setIsLoading(false);
       }
@@ -26,6 +30,14 @@ export default function ProductPage() {
 
     getProduct();
   }, [id]);
+
+  if (isError) {
+    return (
+      <div>
+        <p>Something went wrong. Could not load data.</p>
+      </div>
+    );
+  }
 
   if (isLoading) {
     return (
