@@ -1,4 +1,5 @@
 import ProductPrice from "./ProductPrice";
+import StarRating from "./StarRating";
 import { useCart } from "../hooks/useCart";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -55,12 +56,13 @@ export default function ProductPage() {
     if (!reviews || reviews.length === 0) {
       return <p>No reviews yet.</p>;
     }
+
     return (
       <ul>
         {reviews.map((review) => (
           <li key={review.id}>
             <p>{review.username}</p>
-            <p>Rating: {review.rating}</p>
+            <StarRating rating={review.rating} />
             <p>{review.description}</p>
           </li>
         ))}
