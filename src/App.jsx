@@ -4,6 +4,7 @@ import ProductPage from "./components/ProductPage";
 import ContactPage from "./components/ContactPage";
 import CheckoutPage from "./components/CheckoutPage";
 import CheckoutSuccessPage from "./components/CheckoutSuccessPage";
+import PageNotFound from "./components/PageNotFound";
 import Layout from "./components/Layout";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -72,6 +73,7 @@ function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="checkout" element={<CheckoutPage />} />
           <Route path="checkout-success" element={<CheckoutSuccessPage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
     </>
