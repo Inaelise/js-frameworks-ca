@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -29,10 +29,15 @@ export default function ContactPage() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({ resolver: yupResolver(schema) });
+
+  const [showModal, setShowModal] = useState(false);
 
   function onSubmit(data) {
     console.log(data);
+    setShowModal(true);
+    reset();
   }
 
   return (
@@ -61,6 +66,16 @@ export default function ContactPage() {
         </div>
         <button type="submit">Send</button>
       </form>
+      {/* Modal */}
+      {showModal && (
+        <div>
+          <div>
+            <p>Thank you for submitting your message!</p>
+            <p>You will get a reply within 1-2 business days.</p>
+            <button onClick={() => setShowModal(false)}>Close</button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
