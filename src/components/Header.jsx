@@ -1,11 +1,19 @@
 import Nav from "./Nav";
 import CartIcon from "./CartIcon";
 import styles from "../css/Header.module.css";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   return (
     <header className={styles.header}>
-      <img className="logo" src="/images/variety-logo.png" alt="Variety logo" />
+      <NavLink to="/">
+        <img
+          className={styles.logo}
+          src="/images/variety-logo.png"
+          alt="Variety logo"
+          title="Go to home page"
+        />
+      </NavLink>
       <Nav />
       <CartIcon />
     </header>
