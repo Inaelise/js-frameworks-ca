@@ -1,14 +1,29 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import styles from "../css/Header.module.css";
 
 export default function Nav() {
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
+    <nav className={styles.navbar}>
+      <ul className={styles.navList}>
+        <li title="Go to home page">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? `${styles.listItem} ${styles.active}` : styles.listItem
+            }
+          >
+            Home
+          </NavLink>
         </li>
-        <li>
-          <Link to="/contact">Contact</Link>
+        <li title="Go to contact page">
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive ? `${styles.listItem} ${styles.active}` : styles.listItem
+            }
+          >
+            Contact
+          </NavLink>
         </li>
       </ul>
     </nav>
