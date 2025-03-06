@@ -1,3 +1,4 @@
+/* Search bar */
 .searchBarContainer {
   display: flex;
   justify-content: center;
@@ -40,7 +41,6 @@
 }
 
 .suggestion {
-  list-style: none;
   padding: 4px 0;
   font-size: 0.9rem;
   border-bottom: 1px solid rgba(67, 146, 255, 0.16);
@@ -49,4 +49,23 @@
 .suggestion:hover {
   background-color: rgba(67, 146, 255, 0.16);
   cursor: pointer;
+}
+
+/* Product list */
+.productList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.suggestion,
+.productItem {
+  list-style: none;
+}
+
+.product {
+  text-decoration: none;
+  color: black;
 }
