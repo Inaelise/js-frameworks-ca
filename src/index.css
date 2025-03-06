@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  padding-top: 100px;
+  font-family: "Inter", "sans-serif";
 }
 
 img {
@@ -31,9 +33,6 @@ img {
   }
 }
 
-.logo {
-  width: 100px;
-}
 .star-icon {
   width: 15px;
   padding-right: 2px;
