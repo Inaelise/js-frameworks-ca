@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import styles from "../css/ContactPage.module.css";
+import { Send } from "lucide-react";
 
 const schema = yup
   .object({
@@ -41,38 +43,70 @@ export default function ContactPage() {
   }
 
   return (
-    <main>
-      <h1>Contact</h1>
+    <main className={styles.contactContainer}>
+      <h1>Contact us</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+        <div className={styles.formGroup}>
           <label htmlFor="name">Full name</label>
-          <input id="name" {...register("fullName")} />
-          <p>{errors.fullName?.message}</p>
+          <input
+            className={styles.formInput}
+            placeholder="Enter your full name"
+            id="name"
+            {...register("fullName")}
+          />
+          <p className={styles.errorMessage}>{errors.fullName?.message}</p>
         </div>
-        <div>
+        <div className={styles.formGroup}>
           <label htmlFor="subject">Subject</label>
-          <input id="subject" {...register("subject")} />
-          <p>{errors.subject?.message}</p>
+          <input
+            className={styles.formInput}
+            placeholder="Enter the subject here"
+            id="subject"
+            {...register("subject")}
+          />
+          <p className={styles.errorMessage}>{errors.subject?.message}</p>
         </div>
-        <div>
+        <div className={styles.formGroup}>
           <label htmlFor="email">Email</label>
-          <input id="email" {...register("email")} />
-          <p>{errors.email?.message}</p>
+          <input
+            className={styles.formInput}
+            placeholder="Example@outlook.com"
+            id="email"
+            {...register("email")}
+          />
+          <p className={styles.errorMessage}>{errors.email?.message}</p>
         </div>
-        <div>
+        <div className={styles.formGroup}>
           <label htmlFor="message">Message</label>
-          <textarea id="message" {...register("message")}></textarea>
-          <p>{errors.message?.message}</p>
+          <textarea
+            className={styles.formTextarea}
+            placeholder="Type your message here"
+            id="message"
+            {...register("message")}
+          ></textarea>
+          <p className={styles.errorMessage}>{errors.message?.message}</p>
         </div>
-        <button type="submit">Send</button>
+        <button
+          className={styles.contactButton}
+          type="submit"
+          title="Send message"
+        >
+          <Send size={20} strokeWidth={1.5} />
+          Send
+        </button>
       </form>
       {/* Modal */}
       {showModal && (
-        <div>
-          <div>
-            <p>Thank you for submitting your message!</p>
+        <div className={styles.contactModal}>
+          <div className={styles.modalBorder}>
+            <h2>Thank you for submitting your message!</h2>
             <p>You will get a reply within 1-2 business days.</p>
-            <button onClick={() => setShowModal(false)}>Close</button>
+            <button
+              className={styles.modalButton}
+              onClick={() => setShowModal(false)}
+            >
+              Close
+            </button>
           </div>
         </div>
       )}
