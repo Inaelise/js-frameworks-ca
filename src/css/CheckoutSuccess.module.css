@@ -1,0 +1,58 @@
+.checkoutSuccess {
+  background-color: white;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.checkoutSuccessBorder {
+  border: 2px solid rgba(42, 65, 155, 0.16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem;
+}
+
+.checkmarkContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2a419b;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.checkoutSuccess h1 {
+  color: #2a419b;
+  font-weight: 500;
+}
+
+.checkoutSuccess p {
+  font-size: 0.9rem;
+  margin-bottom: 3rem;
+}
+
+.checkoutSuccessBtn {
+  background-color: white;
+  font-size: 0.9rem;
+  color: #2a419b;
+  border: 2px solid #2a419b;
+  padding: 0.5rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out !important;
+}
+
+.checkoutSuccessBtn:hover {
+  background-color: #2a419b;
+  color: white;
+  transform: scale(1.05) !important;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 640px) {
+  .checkoutSuccess {
+    max-width: 700px;
+    margin: auto;
+  }
+}
