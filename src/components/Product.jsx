@@ -10,13 +10,19 @@ export default function Product(props) {
       className={styles.product}
       title="View Product"
     >
-      <img src={props.img.url} alt={props.img.alt} />
-      <h2>{props.title}</h2>
-      <ProductPrice
-        price={props.price}
-        discountedPrice={props.discountedPrice}
+      <img
+        className={styles.productImg}
+        src={props.img.url}
+        alt={props.img.alt}
       />
-      {!props.rating ? null : <StarRating rating={props.rating} />}
+      <div className={styles.productInfo}>
+        <h2>{props.title}</h2>
+        {!props.rating ? null : <StarRating rating={props.rating} />}
+        <ProductPrice
+          price={props.price}
+          discountedPrice={props.discountedPrice}
+        />
+      </div>
     </Link>
   );
 }

@@ -5,7 +5,10 @@ import styles from "../css/Home.module.css";
 export default function Home({ items, onSearch }) {
   return (
     <main>
-      <section>
+      <section className={styles.listContainer}>
+        <h1 className={styles.homeTitle}>
+          A variety of products - endless choices
+        </h1>
         <div>
           <SearchBar onSearch={onSearch} items={items} />
         </div>
