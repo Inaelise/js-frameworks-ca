@@ -1,0 +1,116 @@
+.contactContainer {
+  background-image: url("/images/waves.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0.5rem;
+  max-width: 700px;
+  margin: auto;
+  margin-top: -3rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.contactContainer h1 {
+  font-size: 2.3rem;
+  color: white;
+  font-weight: 700;
+  padding-bottom: 1rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #2a419b;
+  font-weight: 600;
+}
+
+.formInput,
+.formTextarea {
+  border: none;
+  border-radius: 30px;
+  padding: 0.7rem 1rem;
+  width: 240px;
+  font-family: "Inter", sans-serif;
+}
+
+.formTextarea {
+  height: 150px;
+}
+
+.contactButton {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  margin: auto;
+  color: white;
+  background-color: #2a419b;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out !important;
+}
+
+.contactButton:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.errorMessage {
+  font-size: 0.8rem;
+  color: red;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.contactModal {
+  position: absolute;
+  background-color: #2a419b;
+  padding: 1rem;
+  box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.1);
+  color: white;
+  text-align: center;
+}
+
+.modalBorder {
+  border: 2px solid rgba(141, 158, 233, 0.16);
+  padding: 2rem;
+}
+
+.contactModal p {
+  font-size: 0.9rem;
+}
+
+.modalButton {
+  background-color: white;
+  font-size: 0.9rem;
+  color: #2a419b;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out !important;
+  margin-top: 1rem;
+}
+
+.modalButton:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .contactContainer {
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+  }
+
+  .contactModal {
+    top: 40%;
+  }
+}
