@@ -3,6 +3,8 @@ import StarRating from "./StarRating";
 import { useCart } from "../hooks/useCart";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import styles from "../css/ProductPage.module.css";
+import { ShoppingCart } from "lucide-react";
 
 export default function ProductPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -58,12 +60,15 @@ export default function ProductPage() {
     }
 
     return (
-      <ul>
+      <ul className={styles.reviewList}>
         {reviews.map((review) => (
-          <li key={review.id}>
-            <p>{review.username}</p>
-            <StarRating rating={review.rating} />
-            <p>{review.description}</p>
+          <li className={styles.review} key={review.id}>
+            <hr className={styles.reviewLine} />
+            <div className={styles.reviewHeader}>
+              <p>{review.username}</p>
+              <StarRating rating={review.rating} />
+            </div>
+            <p className={styles.reviewDescription}>{review.description}</p>
           </li>
         ))}
       </ul>
@@ -72,32 +77,44 @@ export default function ProductPage() {
 
   return (
     <main>
-      <section>
+      <section className={styles.productPage}>
         <h1>{product.title}</h1>
-        <img src={product.image.url} alt={product.image.alt} />
-        <p>{product.description}</p>
-        <ProductPrice
-          price={product.price}
-          discountedPrice={product.discountedPrice}
+        <img
+          className={styles.productPageImg}
+          src={product.image.url}
+          alt={product.image.alt}
         />
-        <button
-          onClick={() =>
-            dispatch({
-              type: "addToCart",
-              payload: {
-                id: product.id,
-                title: product.title,
-                price: product.price,
-                discountedPrice: product.discountedPrice,
-                image: product.image,
-              },
-            })
-          }
-        >
-          Add to cart
-        </button>
+        <div className={styles.itemContainer}>
+          <p className={styles.itemDescription}>{product.description}</p>
+          <ProductPrice
+            price={product.price}
+            discountedPrice={product.discountedPrice}
+          />
+          <button
+            className={styles.addToCartButton}
+            onClick={() =>
+              dispatch({
+                type: "addToCart",
+                payload: {
+                  id: product.id,
+                  title: product.title,
+                  price: product.price,
+                  discountedPrice: product.discountedPrice,
+                  image: product.image,
+                },
+              })
+            }
+          >
+            <ShoppingCart
+              size={20}
+              strokeWidth={2.5}
+              className={styles.buttonIcon}
+            />
+            Add to cart
+          </button>
+        </div>
       </section>
-      <section>
+      <section className={styles.reviewContainer}>
         <h2>Reviews</h2>
         {showReviews(product.reviews)}
       </section>
