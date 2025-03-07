@@ -3,14 +3,19 @@ import { Search } from "lucide-react";
 import { X } from "lucide-react";
 import styles from "../css/Home.module.css";
 
-export default function SearchBar({ onSearch, items }) {
-  const [query, setQuery] = useState("");
+export default function SearchBar({ onSearch, items, query }) {
+  const [searchInput, setSearchInput] = useState(query);
   const [suggestions, setSuggestions] = useState([]);
   const searchRef = useRef(null);
 
+  useEffect(() => {
+    setSearchInput(query);
+  }, [query]);
+
   const handleChange = (e) => {
     const value = e.target.value;
-    setQuery(value);
+    setSearchInput(value);
+    onSearch(value);
 
     if (value.trim === "") {
       setSuggestions([]);
@@ -25,35 +30,23 @@ export default function SearchBar({ onSearch, items }) {
   };
 
   const handleSelect = (title) => {
-    setQuery(title);
+    setSearchInput(title);
     setSuggestions([]);
     onSearch(title);
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      onSearch(query);
+      onSearch(searchInput);
       setSuggestions([]);
     }
   };
 
   const clearSearch = () => {
-    setQuery("");
+    setSearchInput("");
     setSuggestions([]);
     onSearch("");
   };
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (searchRef.current && !searchRef.current.contains(e.target)) {
-        setSuggestions([]);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   return (
     <div ref={searchRef} className={styles.searchContainer}>
@@ -64,7 +57,7 @@ export default function SearchBar({ onSearch, items }) {
         <input
           className={styles.searchBar}
           type="text"
-          value={query}
+          value={searchInput}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           placeholder="Search..."

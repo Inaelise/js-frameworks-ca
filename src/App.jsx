@@ -6,7 +6,7 @@ import CheckoutPage from "./components/CheckoutPage";
 import CheckoutSuccessPage from "./components/CheckoutSuccessPage";
 import PageNotFound from "./components/PageNotFound";
 import Layout from "./components/Layout";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const apiUrl = "https://v2.api.noroff.dev/online-shop";
@@ -16,6 +16,7 @@ function App() {
   const [filteredItems, setFilteredItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     async function getData() {
@@ -36,6 +37,12 @@ function App() {
 
     getData();
   }, []);
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setFilteredItems(items);
+    }
+  }, [location.pathname, items]);
 
   const handleSearch = (searchQuery) => {
     if (!searchQuery.trim()) {
