@@ -1,11 +1,9 @@
 body {
   margin: 0;
   padding-top: 100px;
+  padding-bottom: 100px;
   font-family: "Inter", "sans-serif";
-}
-
-img {
-  width: 200px;
+  background-color: rgba(152, 154, 255, 0.34);
 }
 
 .spinner-container {
