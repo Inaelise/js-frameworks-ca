@@ -22,16 +22,13 @@
   display: flex;
   justify-content: right;
   list-style: none;
-  padding: none;
+  padding-right: 2rem;
   gap: 20px;
-}
-
-.listItem {
-  display: inline-block;
 }
 
 .listItem,
 .cartIcon {
+  display: inline-block;
   text-decoration: none;
   font-size: 0.9rem;
   color: #2a419b;
@@ -45,8 +42,6 @@
 }
 
 .cartIcon {
-  margin-right: 20px;
-  margin-left: 20px;
   position: relative;
 }
 
@@ -71,11 +66,6 @@
 @media (min-width: 640px) {
   .navList {
     gap: 60px;
-  }
-
-  .cartIcon {
-    margin-right: 60px;
-    margin-left: 60px;
   }
 }
 
