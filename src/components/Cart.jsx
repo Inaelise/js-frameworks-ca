@@ -73,7 +73,7 @@ export default function Cart() {
                     })
                   }
                 >
-                  <X size={16} strokeWidth={2.5} /> Remove
+                  <X size={20} strokeWidth={3} />
                 </button>
                 <div className={styles.itemPrice}>
                   <ProductPrice
