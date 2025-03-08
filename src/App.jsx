@@ -8,7 +8,9 @@ import PageNotFound from "./components/PageNotFound";
 import Layout from "./components/Layout";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import styles from "./css/Spinner.module.css";
+import { CircleAlert } from "lucide-react";
+import style from "./css/Spinner.module.css";
+import styles from "./css/Home.module.css";
 
 const apiUrl = "https://v2.api.noroff.dev/online-shop";
 
@@ -65,11 +67,12 @@ function App() {
             index
             element={
               isLoading ? (
-                <div className={styles.spinnerContainer}>
-                  <div className={styles.spinner}></div>
+                <div className={style.spinnerContainer}>
+                  <div className={style.spinner}></div>
                 </div>
               ) : isError ? (
-                <div>
+                <div className={styles.errorContainer}>
+                  <CircleAlert size={38} />
                   <p>Something went wrong. Could not load data.</p>
                 </div>
               ) : (

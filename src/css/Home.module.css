@@ -124,6 +124,12 @@
   margin-left: 1rem;
 }
 
+.errorContainer {
+  text-align: center;
+  margin-top: 5rem;
+  color: #2a419b;
+}
+
 @media (min-width: 640px) {
   .productList {
     flex-direction: row;

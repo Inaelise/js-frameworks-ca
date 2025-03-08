@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "../css/ProductPage.module.css";
 import style from "../css/Spinner.module.css";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, CircleAlert } from "lucide-react";
 
 export default function ProductPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +20,6 @@ export default function ProductPage() {
       setIsLoading(true);
       setIsError(false);
       try {
-        /* throw new Error("Simulated network error"); */
         const response = await fetch(apiUrl);
         const json = await response.json();
         setProduct(json.data);
@@ -37,7 +36,8 @@ export default function ProductPage() {
 
   if (isError) {
     return (
-      <div>
+      <div className={styles.errorContainer}>
+        <CircleAlert size={38} />
         <p>Something went wrong. Could not load data.</p>
       </div>
     );
