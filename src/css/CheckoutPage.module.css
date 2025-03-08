@@ -147,6 +147,26 @@
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
+.emptyCart {
+  font-size: 1.1rem;
+  margin-top: 6rem;
+}
+
+.emptyCart,
+.emptyLink {
+  text-align: center;
+}
+
+.emptyLink {
+  color: #2a419b;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.emptyLink:hover {
+  color: white;
+}
+
 @media (min-width: 768px) {
   .cartMain {
     max-width: 800px;

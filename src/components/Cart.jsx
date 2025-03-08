@@ -23,7 +23,12 @@ export default function Cart() {
     <main className={styles.cartMain}>
       <h1>Shopping Cart</h1>
       {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <div>
+          <p className={styles.emptyCart}>Your cart is empty.</p>
+          <NavLink className={styles.emptyLink} to="/">
+            <p title="Go to products">Go to products</p>
+          </NavLink>
+        </div>
       ) : (
         <div>
           <ul className={styles.cartList}>
