@@ -88,7 +88,7 @@ export default function Cart() {
               <Trash size={16} strokeWidth={2.5} /> Clear cart
             </button>
           )}
-          <h2>Total: {totalPrice.toFixed(2)}</h2>
+          <h2>Total: {totalPrice.toFixed(2)} kr</h2>
           <div className={styles.bottomBtns}>
             <NavLink to="/">
               <button className={styles.continueBtn} title="Go to home">
