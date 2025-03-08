@@ -8,6 +8,7 @@ import PageNotFound from "./components/PageNotFound";
 import Layout from "./components/Layout";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import styles from "./css/Spinner.module.css";
 
 const apiUrl = "https://v2.api.noroff.dev/online-shop";
 
@@ -64,8 +65,8 @@ function App() {
             index
             element={
               isLoading ? (
-                <div className="spinner-container">
-                  <div className="spinner"></div>
+                <div className={styles.spinnerContainer}>
+                  <div className={styles.spinner}></div>
                 </div>
               ) : isError ? (
                 <div>

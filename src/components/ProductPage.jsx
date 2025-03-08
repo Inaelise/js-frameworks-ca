@@ -4,6 +4,7 @@ import { useCart } from "../hooks/useCart";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "../css/ProductPage.module.css";
+import style from "../css/Spinner.module.css";
 import { ShoppingCart } from "lucide-react";
 
 export default function ProductPage() {
@@ -44,8 +45,8 @@ export default function ProductPage() {
 
   if (isLoading) {
     return (
-      <div className="spinner-container">
-        <div className="spinner"></div>
+      <div className={style.spinnerContainer}>
+        <div className={style.spinner}></div>
       </div>
     );
   }
