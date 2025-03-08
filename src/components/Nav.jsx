@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styles from "../css/Header.module.css";
+import CartIcon from "./CartIcon";
 
 export default function Nav() {
   return (
@@ -24,6 +25,9 @@ export default function Nav() {
           >
             Contact
           </NavLink>
+        </li>
+        <li>
+          <CartIcon />
         </li>
       </ul>
     </nav>

@@ -1,5 +1,4 @@
 import Nav from "./Nav";
-import CartIcon from "./CartIcon";
 import styles from "../css/Header.module.css";
 import { NavLink } from "react-router-dom";
 
@@ -15,7 +14,6 @@ export default function Header() {
         />
       </NavLink>
       <Nav />
-      <CartIcon />
     </header>
   );
 }
