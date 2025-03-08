@@ -1,5 +1,8 @@
 import { useCart } from "../hooks/useCart";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
+import styles from "../css/CheckoutPage.module.css";
+import { Plus, Minus, Trash, X } from "lucide-react";
+import ProductPrice from "./ProductPrice";
 
 export default function Cart() {
   const { cart, dispatch } = useCart();
@@ -17,40 +20,47 @@ export default function Cart() {
   }
 
   return (
-    <main>
+    <main className={styles.cartMain}>
       <h1>Shopping Cart</h1>
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
         <div>
-          <ul>
+          <ul className={styles.cartList}>
             {cart.map((item) => (
               <li key={item.id}>
                 <img src={item.image.url} alt={item.image.alt} />
-                <p>{item.title}</p>
-                <p>{item.discountedPrice}</p>
+                <p className={styles.itemTitle}>{item.title}</p>
+                <div className={styles.btnsContainer}>
+                  <button
+                    className={styles.quantityBtn}
+                    title="Decrease quantity"
+                    onClick={() =>
+                      dispatch({
+                        type: "decreaseQuantity",
+                        payload: { id: item.id },
+                      })
+                    }
+                  >
+                    <Minus size={16} strokeWidth={3} />
+                  </button>
+                  <p>{item.quantity}</p>
+                  <button
+                    className={styles.quantityBtn}
+                    title="Increase quantity"
+                    onClick={() =>
+                      dispatch({
+                        type: "increaseQuantity",
+                        payload: { id: item.id },
+                      })
+                    }
+                  >
+                    <Plus size={16} strokeWidth={3} />
+                  </button>
+                </div>
                 <button
-                  onClick={() =>
-                    dispatch({
-                      type: "decreaseQuantity",
-                      payload: { id: item.id },
-                    })
-                  }
-                >
-                  -
-                </button>
-                <p>{item.quantity}</p>
-                <button
-                  onClick={() =>
-                    dispatch({
-                      type: "increaseQuantity",
-                      payload: { id: item.id },
-                    })
-                  }
-                >
-                  +
-                </button>
-                <button
+                  className={styles.removeBtn}
+                  title="Remove from cart"
                   onClick={() =>
                     dispatch({
                       type: "removeFromCart",
@@ -58,18 +68,41 @@ export default function Cart() {
                     })
                   }
                 >
-                  Remove
+                  <X size={16} strokeWidth={2.5} /> Remove
                 </button>
+                <div className={styles.itemPrice}>
+                  <ProductPrice
+                    price={item.price}
+                    discountedPrice={item.discountedPrice}
+                  />
+                </div>
               </li>
             ))}
           </ul>
           {cart.length > 0 && (
-            <button onClick={() => dispatch({ type: "clearCart" })}>
-              Clear cart
+            <button
+              className={styles.clearCartBtn}
+              title="Clear cart"
+              onClick={() => dispatch({ type: "clearCart" })}
+            >
+              <Trash size={16} strokeWidth={2.5} /> Clear cart
             </button>
           )}
           <h2>Total: {totalPrice.toFixed(2)}</h2>
-          <button onClick={handleCheckout}>Checkout</button>
+          <div className={styles.bottomBtns}>
+            <NavLink to="/">
+              <button className={styles.continueBtn} title="Go to home">
+                Continue shopping
+              </button>
+            </NavLink>
+            <button
+              className={styles.checkoutBtn}
+              onClick={handleCheckout}
+              title="Checkout cart"
+            >
+              Checkout
+            </button>
+          </div>
         </div>
       )}
     </main>
