@@ -1,4 +1,3 @@
-import "./App.css";
 import Home from "./components/Home";
 import ProductPage from "./components/ProductPage";
 import ContactPage from "./components/ContactPage";
