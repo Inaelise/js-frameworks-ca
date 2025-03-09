@@ -77,48 +77,57 @@ export default function ProductPage() {
   }
 
   return (
-    <main>
-      <section className={styles.productPage}>
-        <h1>{product.title}</h1>
-        <img
-          className={styles.productPageImg}
-          src={product.image.url}
-          alt={product.image.alt}
-        />
-        <div className={styles.itemContainer}>
-          <p className={styles.itemDescription}>{product.description}</p>
-          <ProductPrice
-            price={product.price}
-            discountedPrice={product.discountedPrice}
+    <>
+      <head>
+        <meta
+          name="description"
+          content={`This is the ${product.title} product page. ${product.description}`}
+        ></meta>
+        <title>{product.title}</title>
+      </head>
+      <main>
+        <section className={styles.productPage}>
+          <h1>{product.title}</h1>
+          <img
+            className={styles.productPageImg}
+            src={product.image.url}
+            alt={product.image.alt}
           />
-          <button
-            className={styles.addToCartButton}
-            onClick={() =>
-              dispatch({
-                type: "addToCart",
-                payload: {
-                  id: product.id,
-                  title: product.title,
-                  price: product.price,
-                  discountedPrice: product.discountedPrice,
-                  image: product.image,
-                },
-              })
-            }
-          >
-            <ShoppingCart
-              size={20}
-              strokeWidth={2.5}
-              className={styles.buttonIcon}
+          <div className={styles.itemContainer}>
+            <p className={styles.itemDescription}>{product.description}</p>
+            <ProductPrice
+              price={product.price}
+              discountedPrice={product.discountedPrice}
             />
-            Add to cart
-          </button>
-        </div>
-      </section>
-      <section className={styles.reviewContainer}>
-        <h2>Reviews</h2>
-        {showReviews(product.reviews)}
-      </section>
-    </main>
+            <button
+              className={styles.addToCartButton}
+              onClick={() =>
+                dispatch({
+                  type: "addToCart",
+                  payload: {
+                    id: product.id,
+                    title: product.title,
+                    price: product.price,
+                    discountedPrice: product.discountedPrice,
+                    image: product.image,
+                  },
+                })
+              }
+            >
+              <ShoppingCart
+                size={20}
+                strokeWidth={2.5}
+                className={styles.buttonIcon}
+              />
+              Add to cart
+            </button>
+          </div>
+        </section>
+        <section className={styles.reviewContainer}>
+          <h2>Reviews</h2>
+          {showReviews(product.reviews)}
+        </section>
+      </main>
+    </>
   );
 }
