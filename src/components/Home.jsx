@@ -2,6 +2,7 @@ import Product from "./Product";
 import SearchBar from "./SearchBar";
 import styles from "../css/Home.module.css";
 import { useEffect, useState } from "react";
+import GoToTop from "./GoToTop";
 
 export default function Home({ items, onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -45,6 +46,7 @@ export default function Home({ items, onSearch }) {
           )}
         </div>
       </section>
+      <GoToTop />
     </main>
   );
 }
